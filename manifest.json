@@ -1,11 +1,10 @@
 {
-  "id": "system3-relay",
-  "name": "Relay",
+  "id": "hixbrain-kb",
+  "name": "HixBrain KB (beta)",
   "version": "0.7.4",
   "minAppVersion": "0.15.0",
-  "description": "Collaborate in real time with live cursors. Create multiplayer folders and manage user access.",
-  "author": "System 3",
-  "authorUrl": "https://system3.md",
-  "fundingUrl": "https://www.buymeacoffee.com/dtkav",
+  "description": "Collaborate in real time with live cursors. Self-hosted fork of No-Instructions/Relay for HixBrain.",
+  "author": "Hix (fork of System 3)",
+  "authorUrl": "https://github.com/mymetrixab-creator/kb",
   "isDesktopOnly": false
 }

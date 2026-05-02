@@ -25,8 +25,10 @@ const debug = process.argv[2] === "debug" || watch || staging || develop;
 const out = process.argv[3] || ".";
 const tld = staging ? "dev" : "md";
 
-const apiUrl = `https://api.system3.${tld}`;
-const authUrl = `https://auth.system3.${tld}`;
+// HIX-FORK: allow overriding API/AUTH URLs via env so we can build against
+// our self-hosted PocketBase. Defaults stay as upstream for clean rebases.
+const apiUrl = process.env.HIXBRAIN_API_URL || `https://api.system3.${tld}`;
+const authUrl = process.env.HIXBRAIN_AUTH_URL || `https://auth.system3.${tld}`;
 const healthUrl = `${apiUrl}/health?version=${gitTag}`;
 console.log("git tag:", gitTag);
 console.log("health URL", healthUrl);
