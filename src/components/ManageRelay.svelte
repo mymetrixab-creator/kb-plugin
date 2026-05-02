@@ -535,19 +535,19 @@
 {#if !$hintDismissed && isNewUser() && relay.name}
 	{#if $remoteFolders.values().length > 0 && !$hasDownloadedFolders && !$relay.owner}
 		<div class="hint-callout-wrapper">
-			<Callout title="Hint">
-				Click the <Download class="svg-icon hint-icon" /> button below to add a Shared Folder to your vault and start collaborating.
+			<Callout title="Подсказка">
+				Click the <Download class="svg-icon hint-icon" /> button below to add a Общая папка to your vault and start collaborating.
 			</Callout>
-			<button class="hint-dismiss" on:click={() => hintDismissed.set(true)} aria-label="Dismiss hint">
+			<button class="hint-dismiss" on:click={() => hintDismissed.set(true)} aria-label="Скрыть подсказку">
 				<X class="svg-icon" />
 			</button>
 		</div>
 	{:else if $remoteFolders.values().length === 0 && $relay.owner}
 		<div class="hint-callout-wrapper">
-			<Callout title="Hint">
+			<Callout title="Подсказка">
 				Добавить общую папку на этот сервер.
 			</Callout>
-			<button class="hint-dismiss" on:click={() => hintDismissed.set(true)} aria-label="Dismiss hint">
+			<button class="hint-dismiss" on:click={() => hintDismissed.set(true)} aria-label="Скрыть подсказку">
 				<X class="svg-icon" />
 			</button>
 		</div>
@@ -555,7 +555,7 @@
 {/if}
 
 {#if $canRenameRelay}
-	<SettingItem name="Name" description="Имя сервера.">
+	<SettingItem name="Имя" description="Имя сервера.">
 		<input
 			type="text"
 			spellcheck="false"
@@ -637,7 +637,7 @@
 					// For relay version > 0, use the full modal with privacy settings
 					shareFolderModal.open();
 				}
-			})}>Share local folder</button
+			})}>Расшарить локальную папку</button
 		>
 	</SettingItem>
 </SettingGroup>
@@ -645,7 +645,7 @@
 <div class="spacer"></div>
 
 <div class="users-header">
-	<SettingItemHeading name="Users">
+	<SettingItemHeading name="Участники">
 		{#if $canManageUsers}
 			<div
 				class="edit-members-button"
@@ -720,7 +720,7 @@
 	</SettingItem>
     -->
 <SettingItemHeading
-	name="Sharing"
+	name="Доступ"
 	helpText="Ключи приглашения дают коллегам доступ к серверу. Когда все нужные люди добавлены, ключ можно отключить."
 ></SettingItemHeading>
 
@@ -771,7 +771,7 @@
 
 	{#if $isShareKeyEnabled}
 		<SettingItem
-			name="Share Key"
+			name="Ключ приглашения"
 			description="Share this key with your collaborators."
 		>
 			<div class="share-key-container">
@@ -798,18 +798,16 @@
 
 		{#if $canManageSharing}
 			<SettingItem
-				name="Rotate key"
+				name="Сменить ключ"
 				description="Create a new share key. The old key will no longer work."
 			>
-				<button on:click={debounce(rotateKey)} class="mod-destructive">
-					Rotate key
-				</button>
+				<button on:click={debounce(rotateKey)} class="mod-destructive">Сменить ключ</button>
 			</SettingItem>
 		{/if}
 	{/if}
 </SettingGroup>
 {#if $canManageSubscription}
-	<SettingItemHeading name="Plan" />
+	<SettingItemHeading name="Тариф" />
 	<SettingGroup>
 		{#if $subscription}
 			<SettingItem name={`Plan: ${$relay.plan}`} description="">
@@ -830,9 +828,7 @@
 						on:click={debounce(() => {
 							handleCancel($subscription);
 						})}
-					>
-						Cancel
-					</button>
+					>Отмена</button>
 				{/if}
 			</SettingItem>
 			{#if !$subscriptions.values()[0].active || $subscriptions.values()[0].cancelAt}
@@ -858,7 +854,7 @@
 		{/if}
 	</SettingGroup>
 	{#if $storageQuota && $storageQuota.quota > 0}
-		<SettingItemHeading name="Storage"></SettingItemHeading>
+		<SettingItemHeading name="Хранилище"></SettingItemHeading>
 		<SettingGroup>
 			{#if $storageQuota.metered}
 				<DiskUsage
@@ -867,21 +863,21 @@
 					)}
 				/>
 				<SlimSettingItem
-					name="Usage"
+					name="Использовано"
 					description="Storage for images, audio, video, etc"
 				>
 					{formatBytes($storageQuota.usage)}
 				</SlimSettingItem>
 
 				<SlimSettingItem
-					name="Total storage"
+					name="Всего места"
 					description="Total available storage."
 				>
 					{formatBytes($storageQuota.quota)}
 				</SlimSettingItem>
 			{:else}
 				<SlimSettingItem
-					name="Total storage"
+					name="Всего места"
 					description="Total available storage."
 				>
 					Unmetered by Relay
@@ -889,7 +885,7 @@
 			{/if}
 
 			<SlimSettingItem
-				name="File size limit"
+				name="Лимит размера файла"
 				description="Maximum supported file size."
 			>
 				{formatBytes($storageQuota.maxFileSize)}
@@ -898,14 +894,14 @@
 	{/if}
 
 	{#if relay.provider && relay.provider.selfHosted}
-		<SettingItemHeading name="Host"></SettingItemHeading>
+		<SettingItemHeading name="Сервер"></SettingItemHeading>
 		<SettingGroup>
 			<SettingItem name="URL" description="">
 				{relay.provider.url}
 			</SettingItem>
 			{#await checkRelayHost(relay) then response}
 				{#if response.level === "warning"}
-					<SettingItem name="Status" description="">
+					<SettingItem name="Статус" description="">
 						<p class="mod-warning relay-host-check">
 							{@html minimark(response.status)}
 
@@ -943,7 +939,7 @@
 {#if !$relay.owner || $relayRoles
 		.filter((role) => role.role === "Owner" && role.relayId === relay.id)
 		.values().length > 1}
-	<SettingItemHeading name="Membership"></SettingItemHeading>
+	<SettingItemHeading name="Участники"></SettingItemHeading>
 	<SettingGroup>
 		<SettingItem
 			name="Leave сервер"
@@ -962,7 +958,7 @@
 {/if}
 
 {#if $canDeleteRelay}
-	<SettingItemHeading name="Danger zone"></SettingItemHeading>
+	<SettingItemHeading name="Опасная зона"></SettingItemHeading>
 	<SettingGroup>
 		<SettingItem
 			name="Destroy сервер"
@@ -986,7 +982,7 @@
 {/if}
 
 <!--SettingItem
-			name="Transfer Ownership"
+			name="Передать владельца"
 			description="Transfer ownership to another user."
 		>
 			<button class="mod-warning" on:click={handleTransfer}>

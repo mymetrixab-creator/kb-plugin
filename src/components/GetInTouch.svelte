@@ -45,7 +45,7 @@
 			<div class="menu-content">
 				<span style="text-align: center; display: flex">
 					<a
-						href="https://discord.system3.md"
+						href="https://discord.hix.kz"
 						target="_blank"
 						rel="noopener noreferrer"
 						class="menu-item"

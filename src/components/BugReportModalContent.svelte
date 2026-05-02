@@ -60,7 +60,7 @@
 	{#if $sent}
 		<div class="centered-message">
 			<SettingItem
-				name="Thank you!"
+				name="Спасибо!"
 				description="Сообщение об ошибке поможет нам улучшить плагин."
 			></SettingItem>
 		</div>
@@ -79,17 +79,17 @@
 		<div class="report-container">
 			<div class="form-content">
 				<SettingItem
-					name="Description"
-					description="Please describe what went wrong and what you were trying to do."
+					name="Описание"
+					description="Опишите что пошло не так и что вы пытались сделать."
 				></SettingItem>
 				<textarea
 					bind:value={$bugDescription}
-					placeholder="Describe the issue here..."
+					placeholder="Опишите проблему..."
 				></textarea>
 
 				<SettingItem
-					name="Include Logs"
-					description="Send logs to the Relay developers to help them debug the issue."
+					name="Приложить логи"
+					description="Отправить логи разработчикам, чтобы помочь починить."
 				>
 					<div
 						role="checkbox"
@@ -108,7 +108,7 @@
 					</div>
 				</SettingItem>
 				{#if $includeLogs}
-					<SettingItem name="Logs" description="">
+					<SettingItem name="Логи" description="">
 						<div slot="description">
 							{#each $logFiles as lfile}
 								<div>

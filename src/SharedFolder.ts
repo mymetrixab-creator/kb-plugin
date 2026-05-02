@@ -184,7 +184,7 @@ export class SharedFolder extends HasProvider {
 		this.files = new Map();
 		this.fset = new Files();
 		this.pendingUpload = new LocalStorage<string>(
-			`${appId}-system3-relay/folders/${this.guid}/pendingUploads`,
+			`${appId}-hixbrain-kb/folders/${this.guid}/pendingUploads`,
 		);
 		this.pendingUpload.forEach((guid, vpath) => {
 			if (!this.existsSync(vpath)) {

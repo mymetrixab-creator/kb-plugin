@@ -45,7 +45,7 @@
 	// Load cached providers from localStorage, keyed by auth URL
 	let cachedProviders = writable<string[]>([]);
 	let shouldAnimate = writable<boolean>(false);
-	const PROVIDERS_CACHE_PREFIX = "system3-relay-auth-providers-";
+	const PROVIDERS_CACHE_PREFIX = "hixbrain-kb-auth-providers-";
 
 	function getCacheKey(): string {
 		// Use the PocketBase URL as the cache key
@@ -310,12 +310,12 @@
 		<RelayText slot="name" />
 		<GetInTouch />
 	</SettingItemHeading>
-	<SettingItemHeading name="Account"></SettingItemHeading>
+	<SettingItemHeading name="Аккаунт"></SettingItemHeading>
 	<AccountSettingItem user={$lm.user}>
 		<button
 			on:click={debounce(() => {
 				logout();
-			})}>Logout</button
+			})}>Выйти</button
 		>
 	</AccountSettingItem>
 	<slot></slot>
@@ -392,7 +392,7 @@
 				{/if}
 			</p>
 			<p class="not-working">
-				Not working?
+				Не работает?
 				<button
 					class="link link-button"
 					on:click={() => {
@@ -402,14 +402,14 @@
 						selectedProvider.set("");
 						hasProviderInfo.set(false);
 						initiate();
-					}}>(try again)</button
+					}}>(повторить)</button
 				>
 			</p>
 		{:else if $pending}
 			<div>
 				<p class="continue">Continue in your browser...</p>
 				<p class="not-working">
-					Not working?
+					Не работает?
 					<button
 						class="link link-button"
 						on:click={() => {
@@ -417,7 +417,7 @@
 							automaticFlow.set(false);
 							error.set("");
 							selectedProvider.set("");
-						}}>(try again)</button
+						}}>(повторить)</button
 					>
 				</p>
 			</div>

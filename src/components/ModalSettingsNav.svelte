@@ -19,7 +19,7 @@
 <div class="modal-setting-nav-bar">
 	<div
 		class="clickable-icon"
-		aria-label="Back"
+		aria-label="Назад"
 		tabindex="0"
 		on:click={handleGoBack}
 		on:keypress={handleKeypress}

@@ -33,14 +33,14 @@
 	const betaVersion = writable<string | null>(null);
 	const loadingMainBranchManifests = writable<boolean>(false);
 
-	// Installation status
+	// Установитьation status
 	let installingUpdate = false;
 	const installingVersion = writable<string | null>(null);
 
 	// Keep a reference to the app for plugin installation
 	// This is important as the plugin instance may be unloaded during update
 	const app = plugin.app as unknown as WithPlugins;
-	const pluginId = "system3-relay";
+	const pluginId = "hixbrain-kb";
 
 	// No need for unsubscriber with reactive bindings
 
@@ -110,11 +110,11 @@
 				stableManifest.set(manifest);
 				stableVersion.set(manifest.version);
 			}
-			const manifestBeta =
+			const manifestБета =
 				await plugin.updateManager.fetchRepoManifest("manifest-beta.json");
-			if (manifestBeta) {
-				betaManifest.set(manifestBeta);
-				betaVersion.set(manifestBeta.version);
+			if (manifestБета) {
+				betaManifest.set(manifestБета);
+				betaVersion.set(manifestБета.version);
 			}
 		} catch (error) {
 			plugin.error("Error fetching main branch manifests:", error);
@@ -233,7 +233,7 @@
 		} catch (error) {
 			plugin.error("Error fetching manifest:", error);
 			manifestError.set(
-				`Error fetching manifest: ${(error as Error).message || "Unknown error"}`,
+				`Error fetching manifest: ${(error as Error).message || "Неизвестная ошибка"}`,
 			);
 		} finally {
 			loadingManifest.set(null);
@@ -347,7 +347,7 @@
 
 	<div class="settings-container">
 		{#if !version}
-			<SlimSettingItem name="Show all releases">
+			<SlimSettingItem name="Показать все релизы">
 				<div
 					class="checkbox-container"
 					class:is-enabled={$showAllReleases}
@@ -382,7 +382,7 @@
 		<!-- Compact tag list at the top -->
 		{#if !version }
 			<div class="release-tags-container">
-				<!-- Beta and Stable alias tags -->
+				<!-- Бета and Стабильная alias tags -->
 
 				{#if $stableManifest}
 					<div
@@ -413,7 +413,7 @@
 							}
 						}}
 					>
-						<div class="tag-name">Stable</div>
+						<div class="tag-name">Стабильная</div>
 					</div>
 				{/if}
 
@@ -446,10 +446,10 @@
 							}
 						}}
 					>
-						<div class="tag-name">Beta</div>
+						<div class="tag-name">Бета</div>
 					</div>
 				{/if}
-				<!-- Development version tag if not already in filtered releases -->
+				<!-- Разработка version tag if not already in filtered releases -->
 				{#if !$filteredReleases.some((release) => {
 						return isCurrentVersion(release.tag_name);
 					})}
@@ -532,10 +532,10 @@
 							<span class="prerelease-badge">Pre-release</span>
 						{/if}
 						{#if $releaseChannels[$selectedManifestTag] === "beta-alias"}
-							<span class="channel-badge beta-badge">Beta</span>
+							<span class="channel-badge beta-badge">Бета</span>
 						{/if}
 						{#if $releaseChannels[$selectedManifestTag] === "stable-alias"}
-							<span class="channel-badge stable-badge">Stable</span>
+							<span class="channel-badge stable-badge">Стабильная</span>
 						{/if}
 					</h3>
 					<div class="manifest-header-actions">
@@ -549,13 +549,13 @@
 									installingUpdate}
 							>
 								{#if $installingVersion === $selectedManifestTag}
-									Installing...
+									Установитьing...
 								{:else}
-									Install
+									Установить
 								{/if}
 							</button>
 						{:else if isCurrentVersion($selectedManifestTag)}
-							<span class="currently-installed">Installed</span>
+							<span class="currently-installed">Установитьed</span>
 						{/if}
 					</div>
 				</div>

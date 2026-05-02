@@ -172,9 +172,7 @@
 								class="mod-warning"
 								on:click={() => handleDelete(store.slug)}
 								title="Delete all data in this store"
-							>
-								Delete
-							</button>
+							>Удалить</button>
 						</div>
 					</SettingItem>
 				{/each}

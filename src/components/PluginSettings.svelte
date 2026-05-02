@@ -179,7 +179,7 @@
 			currentRelay = await plugin.relayManager.createRelay("");
 			currentComponent = ManageRelay;
 		} catch (error: any) {
-			handleServerError(error, "Failed to create relay");
+			handleServerError(error, "Не удалось создать сервер");
 		}
 	}
 

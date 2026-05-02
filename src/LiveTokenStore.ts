@@ -68,11 +68,11 @@ async function refresh(
 			folder: entity.folderId,
 		});
 	} else {
-		onError(new Error("No remote to connect to"));
+		onError(new Error("Нет удалённого хранилища"));
 		return;
 	}
 	if (!loginManager.loggedIn) {
-		onError(Error("Not logged in"));
+		onError(Error("Не выполнен вход"));
 		return;
 	}
 	const headers = {
@@ -189,10 +189,10 @@ export class LiveTokenStore extends TokenStore<ClientToken> {
 				contentLength,
 			});
 		} else {
-			throw new Error(`No remote to connect to for ${documentId}`);
+			throw new Error(`Нет удалённого хранилища for ${documentId}`);
 		}
 		if (!this.loginManager.loggedIn) {
-			throw new Error("Not logged in");
+			throw new Error("Не выполнен вход");
 		}
 		const headers = {
 			Authorization: `Bearer ${this.loginManager.user?.token}`,

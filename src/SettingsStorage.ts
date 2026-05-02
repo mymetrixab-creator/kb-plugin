@@ -394,7 +394,7 @@ export class NamespacedSettings<
 			});
 		} catch (error) {
 			const errorMessage =
-				error instanceof Error ? error.message : "Unknown error";
+				error instanceof Error ? error.message : "Неизвестная ошибка";
 			throw new SettingsError(
 				`Failed to set value at path ${this.getPath()}: ${errorMessage}`,
 				this.getPath(),

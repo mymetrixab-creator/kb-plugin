@@ -25,7 +25,7 @@ export class AwarenessViewPlugin extends HasLogging {
 	private async install() {
 		if (!this.view || this.destroyed) return;
 
-		this.log("Installing awareness component for", this.view.view.file?.path);
+		this.log("Установитьing awareness component for", this.view.view.file?.path);
 
 		// Wrap the title immediately to avoid focus loss later
 		this.wrapTitle();

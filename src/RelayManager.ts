@@ -1283,7 +1283,7 @@ export class RelaySubscriptionAuto
 	public get user(): RelayUser {
 		const user = this.users.get(this.subscription.user);
 		if (!user) {
-			throw new Error("invalid subscription");
+			throw new Error("недействительная подписка");
 		}
 		return user;
 	}
@@ -1295,7 +1295,7 @@ export class RelaySubscriptionAuto
 	public get relay(): Relay {
 		const relay = this.relays.get(this.subscription.relay);
 		if (!relay) {
-			throw new Error("invalid subscription");
+			throw new Error("недействительная подписка");
 		}
 		return relay;
 	}
@@ -1712,14 +1712,14 @@ export class RelayManager extends HasLogging {
 
 	async getSubscriptionToken(subscription: RelaySubscription): Promise<string> {
 		if (!this.pb || !this.pb.authStore.isValid) {
-			throw new Error("Auth is not valid");
+			throw new Error("Сессия недействительна");
 		}
 		const url = `/api/subscription/${subscription.id}/token`;
 		const response = await this.pb.send(url, {
 			method: "POST",
 		});
 		if (response !== 200) {
-			throw new Error("Token API failed");
+			throw new Error("Не удалось получить sync-токен");
 		}
 		return response.json()["token"];
 	}
@@ -1923,14 +1923,14 @@ export class RelayManager extends HasLogging {
 			},
 		);
 		if (!record) {
-			throw new Error("Failed to create Relay");
+			throw new Error("Не удалось создать сервер");
 		}
 		if (!this.user) {
-			throw new Error("Not Logged In");
+			throw new Error("Не выполнен вход");
 		}
 		const relay = this.store?.ingest<Relay>(record);
 		if (!relay) {
-			throw new Error("Failed to create relay");
+			throw new Error("Не удалось создать сервер");
 		}
 		return relay;
 	}
@@ -1975,7 +1975,7 @@ export class RelayManager extends HasLogging {
 		// Ingest the response into the store
 		const relay = this.store?.ingest<Relay>(response);
 		if (!relay) {
-			throw new Error("Failed to create self-hosted relay");
+			throw new Error("Не удалось создать self-hosted сервер");
 		}
 
 		return relay;

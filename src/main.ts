@@ -182,11 +182,11 @@ export default class Live extends Plugin {
 		const settings = this.endpointSettings.get();
 
 		if (!settings.activeTenantId || !settings.tenants?.length) {
-			new Notice("Please configure an enterprise tenant first", 4000);
+			new Notice("Сначала настройте корпоративный сервер", 4000);
 			return;
 		}
 
-		const notice = new Notice("Validating endpoints...", 0);
+		const notice = new Notice("Проверка адресов...", 0);
 
 		try {
 			const result = await this.loginManager.validateAndApplyEndpoints();
@@ -199,9 +199,9 @@ export default class Live extends Plugin {
 					_lastValidationError: undefined,
 					_lastValidationAttempt: undefined,
 				}));
-				new Notice("✓ Endpoints validated and applied successfully!", 5000);
+				new Notice("✓ Адреса проверены и применены.", 5000);
 				if (result.licenseInfo) {
-					this.log("License validation successful:", result.licenseInfo);
+					this.log("Лицензия проверена:", result.licenseInfo);
 				}
 			} else {
 				// Store validation error for display in settings
@@ -210,29 +210,29 @@ export default class Live extends Plugin {
 					_lastValidationError: result.error,
 					_lastValidationAttempt: Date.now(),
 				}));
-				new Notice(`❌ Validation failed: ${result.error}`, 8000);
+				new Notice(`❌ Проверка не прошла: ${result.error}`, 8000);
 			}
 		} catch (error) {
 			notice.hide();
 			const errorMessage =
-				error instanceof Error ? error.message : "Unknown error";
+				error instanceof Error ? error.message : "Неизвестная ошибка";
 			// Store validation error for display in settings
 			await this.endpointSettings.update((current) => ({
 				...current,
 				_lastValidationError: errorMessage,
 				_lastValidationAttempt: Date.now(),
 			}));
-			new Notice(`❌ Validation error: ${errorMessage}`, 8000);
+			new Notice(`❌ Ошибка проверки: ${errorMessage}`, 8000);
 		}
 	}
 
 	/**
-	 * Reset to default endpoints
+	 * Сброшено к адресам по умолчанию
 	 */
 	resetToDefaultEndpoints() {
 		this.loginManager.getEndpointManager().clearValidatedEndpoints();
 		this.endpointSettings.update(() => ({}));
-		new Notice("Reset to default endpoints", 3000);
+		new Notice("Сброшено к адресам по умолчанию", 3000);
 	}
 
 	/**
@@ -295,7 +295,7 @@ export default class Live extends Plugin {
 			}
 		} catch (error) {
 			const errorMessage =
-				error instanceof Error ? error.message : "Unknown error";
+				error instanceof Error ? error.message : "Неизвестная ошибка";
 			this.error("Startup endpoint validation error:", errorMessage);
 			// Store the error for display in settings
 			await this.endpointSettings.update((current) => ({
@@ -444,8 +444,8 @@ export default class Live extends Plugin {
 
 		const code = `async function() {
 			const app = window.app;
-			await app.plugins.disablePlugin("system3-relay");
-			await app.plugins.enablePlugin("system3-relay");
+			await app.plugins.disablePlugin("hixbrain-kb");
+			await app.plugins.enablePlugin("hixbrain-kb");
 		}`;
 		(this.app as any).reloadRelay = new Function("return " + code);
 
@@ -465,7 +465,7 @@ export default class Live extends Plugin {
 
 		this.addCommand({
 			id: "configure-endpoints",
-			name: "Configure enterprise tenant",
+			name: "Настроить enterprise tenant",
 			callback: () => {
 				this.openEndpointConfigurationModal();
 			},
@@ -503,7 +503,7 @@ export default class Live extends Plugin {
 						await this.updateManager.installUpdate(newRelease);
 					},
 				});
-				this.log(`Update available: v${this.version} → ${newRelease.tag_name}`);
+				this.log(`Доступно обновление: v${this.version} → ${newRelease.tag_name}`);
 			} else {
 				// Remove update command when no update is available
 				this.removeCommand("update-plugin");
@@ -552,7 +552,7 @@ export default class Live extends Plugin {
 		);
 
 		if (!this.loginManager.setup()) {
-			new Notice("Please sign in to use relay");
+			new Notice("Пожалуйста sign in to use relay");
 		}
 
 		this.app.workspace.onLayoutReady(() => {
@@ -674,7 +674,7 @@ export default class Live extends Plugin {
 									.setIcon("cloud-download")
 									.onClick(async () => {
 										await ifile.pull();
-										new Notice(`Download complete: ${ifile.name}`);
+										new Notice(`Скачивание завершено: ${ifile.name}`);
 									});
 							});
 							if (this.debugSettings.get().debugging) {
@@ -685,7 +685,7 @@ export default class Live extends Plugin {
 										.onClick(async () => {
 											const present = await ifile.verifyUpload();
 											new Notice(
-												`${ifile.name} ${present ? "on server" : "missing from server"}`,
+												`${ifile.name} ${present ? "на сервере" : "отсутствует на сервере"}`,
 											);
 										});
 								});
@@ -698,7 +698,7 @@ export default class Live extends Plugin {
 										await ifile.push(true);
 										const present = await ifile.verifyUpload();
 										new Notice(
-											`${present ? "File uploaded:" : "File upload failed:"} ${ifile.name}`,
+											`${present ? "Файл загружен:" : "Ошибка загрузки файла:"} ${ifile.name}`,
 										);
 									});
 							});
@@ -777,7 +777,7 @@ export default class Live extends Plugin {
 		// eslint-disable-next-line @typescript-eslint/no-explicit-any
 		const setting = (this.app as any).setting;
 		await setting.open();
-		await setting.openTabById("system3-relay");
+		await setting.openTabById("hixbrain-kb");
 		this.settingsTab.navigateTo(path);
 	}
 
@@ -1134,7 +1134,7 @@ export default class Live extends Plugin {
 		} else {
 			const appAny = this.app as any;
 			const appCommands = appAny.commands;
-			const qualifiedCommand = `system3-relay:${command}`;
+			const qualifiedCommand = `hixbrain-kb:${command}`;
 			if (
 				appCommands.commands.hasOwnProperty(qualifiedCommand) ||
 				appAny.hotkeyManager.removeDefaultHotkeys(qualifiedCommand)

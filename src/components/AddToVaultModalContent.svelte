@@ -58,12 +58,12 @@
 	});
 </script>
 
-<div class="modal-title">Add to vault</div>
+<div class="modal-title">Добавить в vault</div>
 
 <div class="modal-content">
 	{#if !remoteFolder}
 		<div class="section">
-			<SettingItemHeading name="Remote folder" />
+			<SettingItemHeading name="Папка с сервера" />
 			<SelectedFolder
 				selectedItem={selectedRemoteFolder}
 				selectButtonText="Choose a folder..."
@@ -81,8 +81,8 @@
 	{/if}
 
 	<SettingItem
-		name="Folder name"
-		description="Set the name of the folder to be added."
+		name="Имя папки"
+		description="Имя папки, которую добавляете."
 	>
 		<input
 			type="text"
@@ -92,8 +92,8 @@
 	</SettingItem>
 
 	<SettingItem
-		name="Folder location"
-		description="Set the location in your vault."
+		name="Расположение папки"
+		description="Куда положить в вашем vault."
 	>
 		<FolderSelectInput
 			{app}
@@ -112,11 +112,11 @@
 			disabled={!selectedRemoteFolder || !folderName.trim()}
 			on:click={debounce(async () => {
 				if (!selectedRemoteFolder) {
-					error = "Please select a remote folder";
+					error = "Пожалуйста select a remote folder";
 					return;
 				}
 				if (!folderName.trim()) {
-					error = "Please enter a folder name";
+					error = "Пожалуйста enter a folder name";
 					return;
 				}
 
@@ -127,7 +127,7 @@
 				).catch((e) => {
 					error = e.message;
 				});
-			})}>Confirm</button
+			})}>Подтвердить</button
 		>
 	</div>
 </div>

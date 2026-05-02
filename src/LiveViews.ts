@@ -812,7 +812,7 @@ export class LiveViewManager {
 					folder
 						.whenReady()
 						.then(() => {
-							this.refresh("[Shared Folder Ready]");
+							this.refresh("[Общая папка Ready]");
 						})
 						.catch((_) => {
 							this.views.forEach((view) => {
@@ -831,7 +831,7 @@ export class LiveViewManager {
 
 		this.offListeners.push(
 			this.sharedFolders.subscribe(() => {
-				this.refresh("[Shared Folders]");
+				this.refresh("[Общие папки]");
 				this.folderListeners.forEach((off, folder) => {
 					if (!this.sharedFolders.has(folder)) {
 						off();

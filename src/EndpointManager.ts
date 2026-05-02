@@ -145,8 +145,8 @@ export class EndpointManager {
 		}
 
 		// Protocol validation - allow HTTP in development builds, HTTPS only in production
-		const isDevelopment = this.isStaging();
-		if (isDevelopment) {
+		const isРазработка = this.isStaging();
+		if (isРазработка) {
 			if (parsedUrl.protocol !== 'https:' && parsedUrl.protocol !== 'http:') {
 				throw new ValidationError('Only HTTP and HTTPS URLs are allowed in development', ValidationErrorType.URL_INVALID);
 			}
@@ -159,7 +159,7 @@ export class EndpointManager {
 		// Warn about localhost usage
 		const hostname = parsedUrl.hostname.toLowerCase();
 		if (hostname === 'localhost' || hostname === '127.0.0.1' || hostname === '::1') {
-			this.log(`Warning: Using localhost endpoint (development build: ${isDevelopment})`);
+			this.log(`Warning: Using localhost endpoint (development build: ${isРазработка})`);
 		}
 
 		// Basic hostname validation
@@ -243,7 +243,7 @@ export class EndpointManager {
 			return result;
 
 		} catch (error) {
-			const errorMessage = error instanceof Error ? error.message : "Unknown error";
+			const errorMessage = error instanceof Error ? error.message : "Неизвестная ошибка";
 			this.log("Failed to validate tenant:", errorMessage);
 			return {
 				success: false,
@@ -317,7 +317,7 @@ export class EndpointManager {
 			};
 
 		} catch (error) {
-			const errorMessage = error instanceof Error ? error.message : "Unknown error";
+			const errorMessage = error instanceof Error ? error.message : "Неизвестная ошибка";
 			return {
 				success: false,
 				error: errorMessage
@@ -382,14 +382,14 @@ export class EndpointManager {
 			};
 
 		} catch (error) {
-			let errorMessage = error instanceof Error ? error.message : "Unknown error";
+			let errorMessage = error instanceof Error ? error.message : "Неизвестная ошибка";
 			
 			// Make connection errors more user-friendly
 			if (errorMessage.includes('Failed to fetch') || 
 				errorMessage.includes('NetworkError') ||
 				errorMessage.includes('ERR_') ||
 				errorMessage.includes('ECONNREFUSED')) {
-				errorMessage = `Unable to connect to ${tenantUrl}. Please check the URL and ensure the server is running.`;
+				errorMessage = `Unable to connect to ${tenantUrl}. Пожалуйста check the URL and ensure the server is running.`;
 			} else if (errorMessage.includes('404')) {
 				errorMessage = `No tenant license found at ${tenantUrl}. This may not be a valid Enterprise Relay tenant.`;
 			} else if (errorMessage.includes('License fetch failed')) {
@@ -482,7 +482,7 @@ export class EndpointManager {
 			};
 
 		} catch (error) {
-			const errorMessage = error instanceof Error ? error.message : "Unknown error";
+			const errorMessage = error instanceof Error ? error.message : "Неизвестная ошибка";
 			this.log(`Tenant license validation failed: ${this.sanitizeUrlForLog(tenantUrl)} - ${errorMessage}`);
 			
 			return {
@@ -547,7 +547,7 @@ export class EndpointManager {
 		} catch (error) {
 			this.log("JWT verification failed:", error);
 			throw new ValidationError(
-				`JWT verification failed: ${error instanceof Error ? error.message : 'Unknown error'}`,
+				`JWT verification failed: ${error instanceof Error ? error.message : 'Неизвестная ошибка'}`,
 				ValidationErrorType.JWT_VERIFICATION_FAILED,
 				error
 			);
@@ -678,7 +678,7 @@ export class EndpointManager {
 			};
 
 		} catch (error) {
-			const errorMessage = error instanceof Error ? error.message : "Unknown error";
+			const errorMessage = error instanceof Error ? error.message : "Неизвестная ошибка";
 			return {
 				success: false,
 				error: errorMessage
@@ -833,7 +833,7 @@ export class EndpointManager {
 			return result;
 
 		} catch (error) {
-			const errorMessage = error instanceof Error ? error.message : "Unknown error";
+			const errorMessage = error instanceof Error ? error.message : "Неизвестная ошибка";
 			this.log("Failed to test validate endpoints:", errorMessage);
 			return {
 				success: false,
@@ -887,7 +887,7 @@ export class EndpointManager {
 			};
 
 		} catch (error) {
-			const errorMessage = error instanceof Error ? error.message : "Unknown error";
+			const errorMessage = error instanceof Error ? error.message : "Неизвестная ошибка";
 			return {
 				success: false,
 				error: errorMessage
@@ -966,7 +966,7 @@ export class EndpointManager {
 			};
 
 		} catch (error) {
-			const errorMessage = error instanceof Error ? error.message : "Unknown error";
+			const errorMessage = error instanceof Error ? error.message : "Неизвестная ошибка";
 			this.log("License fetch error:", errorMessage);
 			return {
 				success: false,

@@ -52,10 +52,10 @@
 </div>
 
 {#if sharedFolder}
-	<SettingItemHeading name="Danger zone"></SettingItemHeading>
+	<SettingItemHeading name="Опасная зона"></SettingItemHeading>
 	<SettingGroup>
 		<SettingItem
-			name="Delete metadata"
+			name="Удалить метаданные"
 			description="Deletes edit history and disables change tracking."
 		>
 			<button
@@ -70,7 +70,7 @@
 
 		<SettingItem
 			name="Delete from vault"
-			description="Delete the local Shared Folder and all of its contents."
+			description="Delete the local Общая папка and all of its contents."
 		>
 			<button
 				class="mod-warning"

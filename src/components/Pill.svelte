@@ -22,7 +22,7 @@
 		</span>
 	{/if}
 	{#if relayId}
-		<span class="notebook system3-icon hidden" aria-label="Tracking Changes">
+		<span class="notebook system3-icon hidden" aria-label="Отслеживание изменений">
 			<Layers class="inline-icon" style="width: 0.8em" />
 		</span>
 		<span
@@ -32,7 +32,7 @@
 			<Satellite class="inline-icon" />
 		</span>
 	{:else}
-		<span class="notebook system3-icon" aria-label="Tracking Changes">
+		<span class="notebook system3-icon" aria-label="Отслеживание изменений">
 			<Layers class="inline-icon" style="width: 0.8em" />
 		</span>
 	{/if}

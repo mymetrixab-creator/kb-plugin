@@ -414,8 +414,8 @@
 		style="padding: 1em; margin: 1em; background: var(--background-secondary)"
 	>
 		<p style="margin: 1em; text-align: center">
-			Как владелец сервера, you can manage this Shared Folder but cannot access
-			its contents. You must be added to the Shared Folder in order to
+			Как владелец сервера, you can manage this Общая папка but cannot access
+			its contents. You must be added to the Общая папка in order to
 			collaborate.
 		</p>
 	</div>
@@ -423,8 +423,8 @@
 
 {#if $canRenameFolder}
 	<SettingItem
-		name="Name"
-		description="Set the Shared Folder's default name. A Shared Folder can always be renamed locally."
+		name="Имя"
+		description="Set the Общая папка's default name. A Общая папка can always be renamed locally."
 	>
 		<input
 			type="text"
@@ -440,22 +440,20 @@
 {/if}
 
 {#if !$folderStore && $canReadFolder}
-	<SettingItemHeading name="Add to vault"></SettingItemHeading>
+	<SettingItemHeading name="Добавить в vault"></SettingItemHeading>
 	<SettingGroup>
 		<SettingItem
-			name="Add this folder to your vault"
-			description="Download and sync this folder to your local device"
+			name="Добавить эту папку в ваш vault"
+			description="Скачать и синхронизировать эту папку на устройство"
 		>
-			<button class="mod-cta system3-button" on:click={debounce(handleAddToVault)}>
-				Add to vault
-			</button>
+			<button class="mod-cta system3-button" on:click={debounce(handleAddToVault)}>Добавить в vault</button>
 		</SettingItem>
 	</SettingGroup>
 {/if}
 
 {#if $relayStore}
 	<SettingItemHeading
-		name="Users with access"
+		name="Имеют доступ"
 		helpText={isPrivate
 			? ""
 			: "Эта папка доступна всем на сервере."}
@@ -517,7 +515,7 @@
 		<SettingItem description="" name="">
 			<button
 				class="mod-cta"
-				aria-label="Add user to private folder"
+				aria-label="Добавить юзера в приватную папку"
 				disabled={$isEditingUsers}
 				on:click={debounce(handleAddUser)}
 			>
@@ -533,15 +531,15 @@
 {#if $folderStore && $syncSettings && $relayStore}
 	<div class="local-settings">
 		<SettingItemHeading
-			name="Sync settings for this device"
+			name="Настройки синхронизации"
 			helpText="You must have attachment storage available in order to sync attachments."
 		></SettingItemHeading>
 
 		<SettingGroup>
 			{#if displayName !== $folderStore.name}
 			<SettingItem
-				name="Local path"
-				description="This folder has a different name in your Vault"
+				name="Локальный путь"
+				description="У папки в vault другое имя"
 			>
 				/{$folderStore.path}
 			</SettingItem>
@@ -591,18 +589,16 @@
 <div class="spacer"></div>
 
 {#if $canDeleteFolder || $canMakeFolderPrivate || $folderStore}
-	<SettingItemHeading name="Danger zone"></SettingItemHeading>
+	<SettingItemHeading name="Опасная зона"></SettingItemHeading>
 	<SettingGroup>
 		{#if $relayStore}
 			{#if $canMakeFolderPrivate}
 				{#if !remoteFolder?.private && remoteFolder?.relay.version > 0}
 					<SettingItem
-						name="Make private"
+						name="Сделать приватной"
 						description="Convert this folder to a private folder and manage access"
 					>
-						<button class="mod-destructive" on:click={debounce(handleMakePrivate)}>
-							Make private
-						</button>
+						<button class="mod-destructive" on:click={debounce(handleMakePrivate)}>Сделать приватной</button>
 					</SettingItem>
 				{/if}
 			{/if}
@@ -621,7 +617,7 @@
 		{#if $folderStore}
 			<SettingItem
 				name="Delete from vault"
-				description="Delete the local Shared Folder and all of its contents."
+				description="Delete the local Общая папка and all of its contents."
 			>
 				<button
 					class="mod-warning"

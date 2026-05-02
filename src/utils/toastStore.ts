@@ -79,7 +79,7 @@ export function handleServerError(
 		// Server error
 		showServerToast(key, "Server error occurred", error.message, "error", 8000);
 	} else {
-		// Unknown error
+		// Неизвестная ошибка
 		showServerToast(key, fallbackMessage, error.message, "error", 5000);
 	}
 }

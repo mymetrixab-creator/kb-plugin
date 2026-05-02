@@ -54,11 +54,11 @@
 
 <div class="modal-title">Debug Info</div>
 <div class="modal-content">
-	<SettingItemHeading name="Environment">
+	<SettingItemHeading name="Окружение">
 		<button
 			on:click={debounce(() => {
 				refresh();
-			})}>Refresh</button
+			})}>Обновить</button
 		>
 	</SettingItemHeading>
 
@@ -71,7 +71,7 @@
 			{$fetchImpl}
 		</SettingItem>
 
-		<SettingItem name="Response" description="">
+		<SettingItem name="Ответ" description="">
 			{$responseImpl}
 		</SettingItem>
 
@@ -79,12 +79,12 @@
 			{$usingBlink}
 		</SettingItem>
 
-		<SettingItem name="Startup Time" description="">
+		<SettingItem name="Время запуска" description="">
 			{plugin.loadTime ? `${plugin.loadTime}ms` : "unknown"}
 		</SettingItem>
 	</SettingGroup>
 
-	<SettingItemHeading name="Connections" />
+	<SettingItemHeading name="Соединения" />
 	<SettingGroup>
 		<SettingItem name="" description="">
 			<div slot="description">
@@ -97,7 +97,7 @@
 		</SettingItem>
 	</SettingGroup>
 
-	<SettingItemHeading name="Log Files" />
+	<SettingItemHeading name="Файлы логов" />
 	<SettingGroup>
 		<SettingItem name="" description="">
 			<div slot="description">

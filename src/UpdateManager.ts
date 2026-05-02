@@ -91,8 +91,8 @@ export class UpdateManager extends Observable<UpdateManager> {
 		private releaseSettings: NamespacedSettings<ReleaseSettings>,
 	) {
 		super("UpdateManager");
-		this.githubReleases = new LocalStorage("system3-relay/releases");
-		this.releaseChannels = new LocalStorage("system3-relay/releaseChannels");
+		this.githubReleases = new LocalStorage("hixbrain-kb/releases");
+		this.releaseChannels = new LocalStorage("hixbrain-kb/releaseChannels");
 	}
 
 	public get releases(): Release[] {
@@ -137,8 +137,8 @@ export class UpdateManager extends Observable<UpdateManager> {
 
 	private async fetchLatestRelease(): Promise<Release | null> {
 		try {
-			const repoOwner = "No-Instructions";
-			const repoName = "Relay";
+			const repoOwner = "mymetrixab-creator";
+			const repoName = "kb-plugin";
 			const latestUrl = `https://api.github.com/repos/${repoOwner}/${repoName}/releases/latest`;
 
 			this.debug(`Fetching latest release from: ${latestUrl}`);
@@ -283,8 +283,8 @@ export class UpdateManager extends Observable<UpdateManager> {
 		branch = "main",
 	): Promise<Manifest | null> {
 		try {
-			const repoOwner = "No-Instructions";
-			const repoName = "Relay";
+			const repoOwner = "mymetrixab-creator";
+			const repoName = "kb-plugin";
 			const fileUrl = `https://raw.githubusercontent.com/${repoOwner}/${repoName}/${branch}/${path}`;
 
 			this.debug(`Fetching ${fileUrl}`);
@@ -357,7 +357,7 @@ export class UpdateManager extends Observable<UpdateManager> {
 		const manifest = await this.fetchReleaseManifest(release);
 		try {
 			this.debug(
-				`Installing update from v${this.plugin.version} to v${manifest.version}...`,
+				`Установитьing update from v${this.plugin.version} to v${manifest.version}...`,
 				manifest,
 			);
 
@@ -371,7 +371,7 @@ export class UpdateManager extends Observable<UpdateManager> {
 
 			this.debug("Update complete. Reloading plugin...");
 
-			const pluginId = "system3-relay";
+			const pluginId = "hixbrain-kb";
 			const plugins = this.plugin.app.plugins;
 			await plugins.disablePlugin(pluginId);
 			await plugins.enablePlugin(pluginId);

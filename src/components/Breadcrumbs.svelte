@@ -108,7 +108,7 @@
 						{#if item.relay.name}
 							{item.relay.name}
 						{:else}
-							<span class="faint">(Untitled Relay Server)</span>
+							<span class="faint">(Без названия Relay Server)</span>
 						{/if}
 					{:else if item.type === "folder"}
 						{item.folder.name}
@@ -116,7 +116,7 @@
 						{#if item.remoteFolder.name}
 							{item.remoteFolder.name}
 						{:else}
-							<span class="faint">(Untitled folder)</span>
+							<span class="faint">(Без названия folder)</span>
 						{/if}
 					{/if}
 				</span>

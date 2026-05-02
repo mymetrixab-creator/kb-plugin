@@ -231,7 +231,7 @@
 </script>
 
 {#if currentStep === "main"}
-	<div class="modal-title">Share local folder</div>
+	<div class="modal-title">Расшарить локальную папку</div>
 
 	<div class="modal-content share-folder-modal" bind:this={modalEl}>
 		<div class="section">
@@ -248,7 +248,7 @@
 
 		{#if relay.version > 0}
 			<SettingItem
-				name="Private"
+				name="Приватный"
 				description="Only selected users can access this folder"
 			>
 				<div
@@ -291,7 +291,7 @@
 		</div>
 
 		<div class="section">
-			<SettingItemHeading name="Users" />
+			<SettingItemHeading name="Участники" />
 			<div class="search-container">
 				<input
 					type="text"
@@ -353,9 +353,9 @@
 		</div>
 
 		<div class="modal-button-container users-step">
-			<button class="mod-muted" on:click={goBack}>Back</button>
+			<button class="mod-muted" on:click={goBack}>Назад</button>
 			<button class="mod-cta" disabled={false} on:click={handleShare}>
-				Share
+				Поделиться
 			</button>
 		</div>
 	</div>

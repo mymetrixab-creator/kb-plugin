@@ -50,10 +50,10 @@
 
 		try {
 			const parsed = new URL(url);
-			const isDevelopment = plugin.loginManager.getEndpointManager().isStaging();
+			const isРазработка = plugin.loginManager.getEndpointManager().isStaging();
 			
 			// Protocol validation - allow HTTP in development builds, HTTPS only in production
-			if (isDevelopment) {
+			if (isРазработка) {
 				if (parsed.protocol !== 'https:' && parsed.protocol !== 'http:') {
 					return { isValid: false, error: 'Only HTTP and HTTPS URLs are allowed in development' };
 				}
@@ -121,7 +121,7 @@
 				forceUpdate(); // Force UI refresh to show error
 			}
 		} catch (error) {
-			const errorMsg = error instanceof Error ? error.message : "Unknown error occurred";
+			const errorMsg = error instanceof Error ? error.message : "Неизвестная ошибка occurred";
 			errorMessage = `Error adding tenant: ${errorMsg}`;
 			showInputError = true;
 		} finally {
@@ -140,7 +140,7 @@
 				errorMessage = result.error || "Failed to switch tenant";
 			}
 		} catch (error) {
-			const errorMsg = error instanceof Error ? error.message : "Unknown error occurred";
+			const errorMsg = error instanceof Error ? error.message : "Неизвестная ошибка occurred";
 			errorMessage = `Error switching tenant: ${errorMsg}`;
 		}
 	}
@@ -156,7 +156,7 @@
 				errorMessage = "Failed to remove tenant";
 			}
 		} catch (error) {
-			const errorMsg = error instanceof Error ? error.message : "Unknown error occurred";
+			const errorMsg = error instanceof Error ? error.message : "Неизвестная ошибка occurred";
 			errorMessage = `Error removing tenant: ${errorMsg}`;
 		}
 	}
@@ -207,8 +207,8 @@
 
 	<!-- Add New Tenant -->
 	<SettingItem 
-		name="Add Enterprise Tenant"
-		description="Enter your organization's tenant URL"
+		name="Добавить сервер-провайдер"
+		description="URL вашего сервера-провайдера"
 	>
 		<div class="add-tenant-container">
 			<input 

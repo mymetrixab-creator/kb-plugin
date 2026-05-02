@@ -17,7 +17,7 @@
 
 <div
 	class="clickable-icon extra-setting-button"
-	aria-label="Open external link"
+	aria-label="Открыть внешнюю ссылку"
 	role="button"
 	tabindex="0"
 	on:click={handleSettingsClick}

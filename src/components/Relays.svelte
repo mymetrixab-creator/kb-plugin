@@ -89,7 +89,7 @@
 				.acceptInvitation(shareKey)
 				.catch((response) => {
 					if (response.status === 429) {
-						new Notice("Slow down");
+						new Notice("Помедленнее");
 					}
 					throw response;
 				});
@@ -195,13 +195,13 @@
 <SettingItemHeading name="Подключиться к серверу"></SettingItemHeading>
 <SettingGroup>
 	<SettingItem
-		name="Share key"
-		description="Enter the code that was shared with you."
+		name="Ключ приглашения"
+		description="Введите ключ, который вам прислали."
 	>
 		<SecretText
 			bind:value={shareKey}
 			disabled={invitePending}
-			placeholder="Enter share key"
+			placeholder="Введите ключ"
 			readonly={false}
 			copyOnClick={false}
 			on:input={handleShareKeyInput}
@@ -212,9 +212,7 @@
 			class="mod-cta system3-button"
 			disabled={invitePending}
 			on:click={debounce(() => handleJoinRelayFromInvite(shareKey))}
-		>
-			Join
-		</button>
+		>Подключиться</button>
 	</SettingItem>
 </SettingGroup>
 
@@ -246,20 +244,18 @@
 		<button
 			class="mod-cta system3-button"
 			on:click={debounce(() => handleCreateRelay())}
-		>
-			Create
-		</button>
+		>Создать</button>
 	</SlimSettingItem>
 </SettingGroup>
 
 <SettingItemHeading
-	name="My vault"
+	name="Мой vault"
 	helpText="Эти общие папки добавлены в ваш vault. Ниже видно, к какому серверу подключена каждая."
 ></SettingItemHeading>
 <SettingGroup>
 	{#if $sharedFolders.items().length === 0}
 		<SettingItem
-			description="No shared folders on this device. Расшарьте папку со страницы настроек сервера, чтобы начать совместную работу."
+			description="На этом устройстве нет общих папок. Расшарьте папку со страницы настроек сервера, чтобы начать совместную работу."
 		/>
 	{/if}
 	{#each $sharedFolders.items().sort(folderSort) as folder}
@@ -293,11 +289,11 @@
 	<SlimSettingItem name="">
 		<button
 			class="mod-cta system3-button"
-			aria-label="Add remote folder to vault"
+			aria-label="Добавить общую папку to vault"
 			on:click={debounce(handleAddFolder)}
 			style="max-width: 11em"
 		>
-			Add remote folder
+			Добавить общую папку
 		</button>
 	</SlimSettingItem>
 </SettingGroup>

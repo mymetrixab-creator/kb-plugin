@@ -44,7 +44,7 @@ export class ViewHookPlugin extends HasLogging {
 	}
 
 	/**
-	 * Install hooks into Obsidian's internal methods for UI-specific edit pathways
+	 * Установить hooks into Obsidian's internal methods for UI-specific edit pathways
 	 */
 	private installMarkdownHooks(view: MarkdownView): void {
 		// eslint-disable-next-line @typescript-eslint/no-this-alias

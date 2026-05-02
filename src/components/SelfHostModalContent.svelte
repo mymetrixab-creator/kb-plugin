@@ -89,7 +89,7 @@
 			}
 			return undefined;
 		} catch {
-			return "Please enter a valid URL";
+			return "Пожалуйста enter a valid URL";
 		}
 	}
 
@@ -134,7 +134,7 @@
 				errors.submit =
 					error instanceof Error
 						? error.message
-						: "Failed to create relay: Unknown error";
+						: "Не удалось создать сервер: Неизвестная ошибка";
 				errors = errors;
 			} finally {
 				isCreating = false;
@@ -153,7 +153,7 @@
 				errors.submit =
 					error instanceof Error
 						? error.message
-						: "Failed to create relay: Unknown error";
+						: "Не удалось создать сервер: Неизвестная ошибка";
 				errors = errors;
 			} finally {
 				isCreating = false;
@@ -244,7 +244,7 @@
 
 	<!-- Owner Selector -->
 	<SettingItem
-		name="Owner"
+		name="Владелец"
 		description="Select who will own this self-hosted relay server."
 	>
 		<select
