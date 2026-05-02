@@ -1,7 +1,7 @@
 {
   "id": "hixbrain-kb",
   "name": "HixBrain KB (beta)",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "minAppVersion": "0.15.0",
   "description": "Collaborate in real time with live cursors. Self-hosted fork of No-Instructions/Relay for HixBrain.",
   "author": "Hix (fork of System 3)",
