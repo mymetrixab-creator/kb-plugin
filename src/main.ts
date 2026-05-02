@@ -355,7 +355,7 @@ export default class Live extends Plugin {
 		flagManager.setSettings(this.featureSettings);
 
 		this.settingsTab = new LiveSettingsTab(this.app, this);
-		this.addRibbonIcon("satellite", "Relay", () => {
+		this.addRibbonIcon("satellite", "HixBrain KB", () => {
 			this.openSettings();
 		});
 
@@ -451,7 +451,7 @@ export default class Live extends Plugin {
 
 		this.addCommand({
 			id: "reload",
-			name: "Reload Relay",
+			name: "Перезагрузить плагин",
 			callback: (this.app as any).reloadRelay(),
 		});
 
@@ -474,7 +474,7 @@ export default class Live extends Plugin {
 		if (flags().enableSelfManageHosts) {
 			this.addCommand({
 				id: "register-host",
-				name: "Register self-hosted Relay Server",
+				name: "Подключить sync-сервер",
 				callback: () => {
 					const modal = new SelfHostModal(
 						this.app,
@@ -613,7 +613,7 @@ export default class Live extends Plugin {
 						if (folder.relayId) {
 							menu.addItem((item) => {
 								item
-									.setTitle("Relay: Relay settings")
+									.setTitle("KB: настройки сервера")
 									.setIcon("gear")
 									.onClick(() => {
 										this.openSettings(`/relays?id=${folder.relayId}`);
@@ -621,7 +621,7 @@ export default class Live extends Plugin {
 							});
 							menu.addItem((item) => {
 								item
-									.setTitle("Relay: Local folder settings")
+									.setTitle("KB: настройки папки")
 									.setIcon("gear")
 									.onClick(() => {
 										this.openSettings(`/shared-folders?id=${folder.guid}`);
@@ -630,7 +630,7 @@ export default class Live extends Plugin {
 							menu.addItem((item) => {
 								item
 									.setTitle(
-										folder.connected ? "Relay: Disconnect" : "Relay: Connect",
+										folder.connected ? "KB: отключить" : "KB: подключить",
 									)
 									.setIcon("satellite")
 									.onClick(() => {
@@ -647,7 +647,7 @@ export default class Live extends Plugin {
 						} else {
 							menu.addItem((item) => {
 								item
-									.setTitle("Relay: Local folder settings")
+									.setTitle("KB: настройки папки")
 									.setIcon("gear")
 									.onClick(() => {
 										this.openSettings(`/shared-folders?id=${folder.guid}`);
@@ -657,7 +657,7 @@ export default class Live extends Plugin {
 						if (folder.relayId && folder.connected) {
 							menu.addItem((item) => {
 								item
-									.setTitle("Relay: Sync")
+									.setTitle("KB: синхронизировать")
 									.setIcon("folder-sync")
 									.onClick(() => {
 										folder.netSync();
@@ -670,7 +670,7 @@ export default class Live extends Plugin {
 						if (ifile && isSyncFile(ifile)) {
 							menu.addItem((item) => {
 								item
-									.setTitle("Relay: Download")
+									.setTitle("KB: скачать")
 									.setIcon("cloud-download")
 									.onClick(async () => {
 										await ifile.pull();
@@ -680,7 +680,7 @@ export default class Live extends Plugin {
 							if (this.debugSettings.get().debugging) {
 								menu.addItem((item) => {
 									item
-										.setTitle("Relay: Verify upload")
+										.setTitle("KB: проверить загрузку")
 										.setIcon("search-check")
 										.onClick(async () => {
 											const present = await ifile.verifyUpload();
@@ -692,7 +692,7 @@ export default class Live extends Plugin {
 							}
 							menu.addItem((item) => {
 								item
-									.setTitle("Relay: Upload")
+									.setTitle("KB: загрузить")
 									.setIcon("cloud-upload")
 									.onClick(async () => {
 										await ifile.push(true);

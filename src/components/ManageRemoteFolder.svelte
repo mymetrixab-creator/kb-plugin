@@ -414,7 +414,7 @@
 		style="padding: 1em; margin: 1em; background: var(--background-secondary)"
 	>
 		<p style="margin: 1em; text-align: center">
-			As Relay Server owner, you can manage this Shared Folder but cannot access
+			Как владелец сервера, you can manage this Shared Folder but cannot access
 			its contents. You must be added to the Shared Folder in order to
 			collaborate.
 		</p>
@@ -458,7 +458,7 @@
 		name="Users with access"
 		helpText={isPrivate
 			? ""
-			: "This folder is accessible to everyone on this Relay Server."}
+			: "Эта папка доступна всем на сервере."}
 	>
 		{#if $remoteFolder.private && $canManageUsers}
 			<div
@@ -608,11 +608,11 @@
 			{/if}
 			{#if $canDeleteFolder}
 				<SettingItem
-					name="Remove from Relay Server"
-					description={`Deletes the remote folder from the Relay Server. Local files will be preserved.`}
+					name="Remove from сервер"
+					description={`Deletes the remote folder from the сервер. Local files will be preserved.`}
 				>
 					<button class="mod-destructive" on:click={debounce(handleDeleteRemote)}>
-						Delete from Relay Server
+						Delete from сервер
 					</button>
 				</SettingItem>
 			{/if}

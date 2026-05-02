@@ -545,7 +545,7 @@
 	{:else if $remoteFolders.values().length === 0 && $relay.owner}
 		<div class="hint-callout-wrapper">
 			<Callout title="Hint">
-				Add a Shared Folder to this Relay.
+				Добавить общую папку на этот сервер.
 			</Callout>
 			<button class="hint-dismiss" on:click={() => hintDismissed.set(true)} aria-label="Dismiss hint">
 				<X class="svg-icon" />
@@ -555,7 +555,7 @@
 {/if}
 
 {#if $canRenameRelay}
-	<SettingItem name="Name" description="Set the Relay Server's name.">
+	<SettingItem name="Name" description="Имя сервера.">
 		<input
 			type="text"
 			spellcheck="false"
@@ -569,7 +569,7 @@
 	</SettingItem>
 {/if}
 
-<SettingItemHeading name="Shared Folders on this Relay Server">
+<SettingItemHeading name="Общие папки на этом сервере">
 	{#if $canManageUsers && $shouldShowToggle}
 		<button
 			class="admin-toggle-btn"
@@ -619,7 +619,7 @@
 	<SettingItem description="" name="">
 		<button
 			class="mod-cta"
-			aria-label="Select a folder to share it with this Relay Server"
+			aria-label="Выбрать папку для расшаривания на сервере"
 			on:click={debounce(() => {
 				if (relay.version === 0) {
 					// For relay version 0, go directly to folder selection
@@ -721,7 +721,7 @@
     -->
 <SettingItemHeading
 	name="Sharing"
-	helpText="Share keys can be shared with collaborators so that they can join the Relay Server. Once you have added all of your collaborators, you can disable the share key to prevent anyone from joining, even if they have the key."
+	helpText="Ключи приглашения дают коллегам доступ к серверу. Когда все нужные люди добавлены, ключ можно отключить."
 ></SettingItemHeading>
 
 <SettingGroup>
@@ -731,15 +731,15 @@
 		<fragment slot="description">
 			{#if $canManageSharing}
 				<div class="setting-item-description">
-					Allow others to join this Relay Server with a Share Key.
+					Разрешить вход на сервер по ключу приглашения.
 				</div>
 			{:else if $isShareKeyEnabled}
 				<div class="setting-item-description">
-					The owner of this Relay Server has enabled key sharing.
+					Владелец сервера включил приглашения по ключу.
 				</div>
 			{:else}
 				<div class="setting-item-description mod-warning">
-					The owner of this Relay Server has disabled key sharing.
+					Владелец сервера отключил приглашения по ключу.
 				</div>
 			{/if}
 		</fragment>
@@ -921,9 +921,9 @@
 			{/await}
 			{#if relay.provider.publicKey}
 				<div class="relay-auth-section">
-					<div class="setting-item-name">Relay Server Configuration</div>
+					<div class="setting-item-name">Сервер Configuration</div>
 					<div class="setting-item-description">
-						Copy this configuration to your Relay Server's TOML file.
+						Copy this configuration to your сервер's TOML file.
 					</div>
 					{#if loadingRelayConfig}
 						<div class="loading-message">Loading configuration...</div>
@@ -946,8 +946,8 @@
 	<SettingItemHeading name="Membership"></SettingItemHeading>
 	<SettingGroup>
 		<SettingItem
-			name="Leave Relay Server"
-			description="Leave the Relay Server. Local data is preserved."
+			name="Leave сервер"
+			description="Leave the сервер. Local data is preserved."
 		>
 			<button
 				class="mod-warning"
@@ -965,14 +965,14 @@
 	<SettingItemHeading name="Danger zone"></SettingItemHeading>
 	<SettingGroup>
 		<SettingItem
-			name="Destroy Relay Server"
-			description="This will destroy the Relay Server (deleting all data on the server). Local data is preserved."
+			name="Destroy сервер"
+			description="This will destroy the сервер (deleting all data on the server). Local data is preserved."
 		>
 			{#if $subscriptions.values().length > 0 && !$subscriptions.values()[0].cancelAt}
 				<button
 					disabled={true}
 					class="mod-warning"
-					aria-label="Cancel subscription to destroy Relay Server."
+					aria-label="Cancel subscription to destroy сервер."
 				>
 					Destroy
 				</button>

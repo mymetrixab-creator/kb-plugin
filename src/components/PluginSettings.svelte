@@ -325,11 +325,7 @@
 	<ToastManager />
 {/if}
 
-{#if plugin.manifest.version !== plugin.version}
-	<span class="relay-version">
-		{plugin.version}
-	</span>
-{/if}
+<!-- HIX-FORK: version watermark removed for cleaner UI -->
 
 <style>
 	.relay-version {

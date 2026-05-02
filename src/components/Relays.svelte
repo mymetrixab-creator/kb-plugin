@@ -155,9 +155,9 @@
 		if (availableFolders.length === 0) {
 			if (totalRemoteFolders === 0) {
 				noFoldersMessage =
-					"Join a Relay Server, or add a Shared Folder on another device.";
+					"Подключитесь к серверу или добавьте общую папку.";
 			} else {
-				noFoldersMessage = "All remote folders are already in your vault.";
+				noFoldersMessage = "Все папки с сервера уже в вашем vault.";
 			}
 		}
 
@@ -192,7 +192,7 @@
 	}
 </script>
 
-<SettingItemHeading name="Join a Relay Server"></SettingItemHeading>
+<SettingItemHeading name="Подключиться к серверу"></SettingItemHeading>
 <SettingGroup>
 	<SettingItem
 		name="Share key"
@@ -219,10 +219,10 @@
 </SettingGroup>
 
 <SettingItemHeading
-	helpText="A Relay Server coordinates real-time updates between collaborators. You can add collaborators and share folders on the Relay Server's settings page."
+	helpText="Сервер координирует совместное редактирование в реальном времени. Управляйте участниками и общими папками на странице настроек сервера."
 >
 	<span slot="name" style="display: inline-flex; align-items: center">
-		Relay Servers
+		Серверы
 	</span>
 </SettingItemHeading>
 <SettingGroup>
@@ -232,7 +232,7 @@
 				{#if relay.name}
 					{relay.name}
 				{:else}
-					<span class="faint">(Untitled Relay Server)</span>
+					<span class="faint">(Без названия)</span>
 				{/if}
 			</Satellite>
 			<SettingsControl
@@ -254,12 +254,12 @@
 
 <SettingItemHeading
 	name="My vault"
-	helpText="The following Shared Folders have been added to your vault. You can see what Relay Server a Shared Folder is connected to below."
+	helpText="Эти общие папки добавлены в ваш vault. Ниже видно, к какому серверу подключена каждая."
 ></SettingItemHeading>
 <SettingGroup>
 	{#if $sharedFolders.items().length === 0}
 		<SettingItem
-			description="No shared folders on this device. Share folders from a Relay Server's settings page to begin collaboration."
+			description="No shared folders on this device. Расшарьте папку со страницы настроек сервера, чтобы начать совместную работу."
 		/>
 	{/if}
 	{#each $sharedFolders.items().sort(folderSort) as folder}
@@ -305,7 +305,7 @@
 	<div class="spacer"></div>
 	<SettingItemHeading
 		name="Subscriptions"
-		helpText="Subscriptions are tied to each Relay Server, not to your user account. Modify and cancel your subscription via our payment processor Stripe."
+		helpText="Подписки привязаны к каждому серверу, а не к учётной записи. Управление — через платёжного провайдера."
 	></SettingItemHeading>
 	<SettingGroup>
 		{#each $subscriptions.values() as subscription}
@@ -319,7 +319,7 @@
 					{#if subscription.relay.name}
 						{subscription.relay.name}
 					{:else}
-						<span class="faint">(Untitled Relay Server)</span>
+						<span class="faint">(Без названия)</span>
 					{/if}
 				</Satellite>
 				<button

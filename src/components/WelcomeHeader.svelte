@@ -2,11 +2,11 @@
 	import RelayText from "./RelayText.svelte";
 </script>
 
-<RelayText size={140} />
-<p class="subtitle">Real-time collaboration in Obsidian</p>
+<RelayText size={160} />
+<p class="subtitle">Командная база знаний — реальное время в Obsidian</p>
 <p class="description">
-	Share folders with your team, edit together in real time, and keep your
-	knowledge library exactly how you want it.
+	Расшаривайте папки, редактируйте вместе живыми курсорами, держите всё на
+	своём сервере.
 </p>
 
 <style>

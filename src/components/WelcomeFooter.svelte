@@ -1,9 +1,8 @@
 <script lang="ts">
-	import Discord from "./Discord.svelte";
 	import { Platform } from "obsidian";
 
 	const helpText =
-		"We require sign-in because your vault needs to communicate securely with Relay servers for syncing. Using an identity provider helps to prevent spam accounts and ensures secure authentication.";
+		"Вход нужен, чтобы ваш vault защищённо синхронизировался с сервером. Идентификация через провайдера предотвращает спам-аккаунты и обеспечивает безопасную авторизацию.";
 
 	let isVisible = false;
 	let isMobile = false;
@@ -44,7 +43,7 @@
 			on:mouseleave={handleMouseLeave}
 			on:click={handleClick}
 		>
-			Why do I need to sign in?
+			Зачем нужен вход?
 		</button>
 
 		{#if isMobile}
@@ -60,14 +59,6 @@
 			</div>
 		{/if}
 	</div>
-</div>
-
-<!-- Discord link -->
-<div class="footer">
-	<a href="https://discord.system3.md" class="discord-link">
-		<Discord />
-		Join the project on Discord
-	</a>
 </div>
 
 <style>

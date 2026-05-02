@@ -71,7 +71,7 @@
 	});
 </script>
 
-<div class="modal-title">Relay database analysis</div>
+<div class="modal-title">Анализ локальной БД</div>
 <div class="system3-indexeddb-analysis">
 	<div class="setting-item">
 		<div class="setting-item-info">
@@ -141,7 +141,7 @@
 				{/if}
 			</div>
 			<div class="system3-stat-item">
-				<div class="system3-stat-label">Relay Databases</div>
+				<div class="system3-stat-label">Базы</div>
 				<div class="system3-stat-value">{$stats.totalStores}</div>
 			</div>
 			<div class="system3-stat-item">

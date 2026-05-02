@@ -61,7 +61,7 @@
 		<div class="centered-message">
 			<SettingItem
 				name="Thank you!"
-				description="Your bug report will help us improve Relay."
+				description="Сообщение об ошибке поможет нам улучшить плагин."
 			></SettingItem>
 		</div>
 	{:else if $sending && !$sent}

@@ -341,7 +341,7 @@
 	}
 </script>
 
-<div class="modal-title">{version ? "Relay installer" : "Relay releases"}</div>
+<div class="modal-title">{version ? "HixBrain KB: установка" : "HixBrain KB: релизы"}</div>
 <div class="modal-content">
 	<div class="settings-spacer"></div>
 
