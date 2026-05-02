@@ -726,7 +726,7 @@
 
 <SettingGroup>
 	<SlimSettingItem
-		name={$canManageSharing ? "Enable key sharing" : "Key sharing"}
+		name={$canManageSharing ? "Включить ключ приглашения" : "Ключ приглашения"}
 	>
 		<fragment slot="description">
 			{#if $canManageSharing}
@@ -772,7 +772,7 @@
 	{#if $isShareKeyEnabled}
 		<SettingItem
 			name="Ключ приглашения"
-			description="Share this key with your collaborators."
+			description="Передайте этот ключ коллеге."
 		>
 			<div class="share-key-container">
 				{#if !$isShareKeyEnabled}
@@ -781,7 +781,7 @@
 						tabindex="0"
 						class="input-like share-key-disabled-notice"
 					>
-						Share key is currently disabled
+						Ключ приглашения сейчас отключён
 					</span>
 				{:else}
 					<SecretText
@@ -799,7 +799,7 @@
 		{#if $canManageSharing}
 			<SettingItem
 				name="Сменить ключ"
-				description="Create a new share key. The old key will no longer work."
+				description="Создать новый ключ. Старый перестанет работать."
 			>
 				<button on:click={debounce(rotateKey)} class="mod-destructive">Сменить ключ</button>
 			</SettingItem>

@@ -1,7 +1,8 @@
 <script lang="ts">
 	import { debounce, Notice, Platform } from "obsidian";
 	import type Live from "../main";
-	import GetInTouch from "./GetInTouch.svelte";
+	// HIX-FORK: GetInTouch (Discord widget) убран — мы не используем upstream community.
+	// import GetInTouch from "./GetInTouch.svelte";
 	import WelcomeHeader from "./WelcomeHeader.svelte";
 	import WelcomeFooter from "./WelcomeFooter.svelte";
 	import AccountSettingItem from "./AccountSettingItem.svelte";
@@ -308,7 +309,6 @@
 {#if $lm.hasUser && $lm.user}
 	<SettingItemHeading>
 		<RelayText slot="name" />
-		<GetInTouch />
 	</SettingItemHeading>
 	<SettingItemHeading name="Аккаунт"></SettingItemHeading>
 	<AccountSettingItem user={$lm.user}>
