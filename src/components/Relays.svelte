@@ -94,10 +94,55 @@
 					throw response;
 				});
 			invitePending = false;
+			// Подтянуть все общие папки этого сервера в vault — без ручного «Add to vault»
+			await autoAddAllRelayFolders(relay);
 			dispatch("joinRelay", { relay });
 		} catch (e) {
 			invalidShareKey = true;
 			invitePending = false;
+		}
+	}
+
+	// Дожидаемся пока подгрузится список общих папок и сразу подключаем их к локальному vault'у.
+	async function autoAddAllRelayFolders(relay: Relay) {
+		// Ждём до 6 секунд пока realtime-подписка плагина наполнит relay.folders.
+		const deadline = Date.now() + 6000;
+		while (Date.now() < deadline) {
+			if (relay.folders && relay.folders.values().length > 0) break;
+			await new Promise((r) => setTimeout(r, 200));
+		}
+
+		const remoteFolders = relay.folders ? relay.folders.values() : [];
+		if (remoteFolders.length === 0) {
+			new Notice(`Подключились к ${relay.name}, общих папок пока нет`);
+			return;
+		}
+
+		let added = 0;
+		for (const remoteFolder of remoteFolders) {
+			// Если уже подключена локально — пропускаем
+			const alreadyInVault = $sharedFolders
+				.items()
+				.some((local) => local.remote?.id === remoteFolder.id);
+			if (alreadyInVault) continue;
+
+			try {
+				// Дефолтное расположение — корень vault'а, имя — как у общей папки
+				await addFolderToVault(remoteFolder, remoteFolder.name, "");
+				added++;
+			} catch (e) {
+				console.error(
+					"[hixbrain] auto-add failed:",
+					remoteFolder.name,
+					e,
+				);
+			}
+		}
+
+		if (added > 0) {
+			new Notice(
+				`Подключено к ${relay.name}: добавлено ${added} ${added === 1 ? "папка" : "папок"}`,
+			);
 		}
 	}
 
