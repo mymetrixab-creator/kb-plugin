@@ -241,7 +241,7 @@ export class DifferencesView extends ItemView {
 
 		// Left file (top)
 		new ActionLineButton({
-			text: `Keep Editor Contents`,
+			text: `Оставить из редактора`,
 			onClick: async (e) => {
 				e.preventDefault();
 				await this.acceptAllFromLeft();
@@ -252,7 +252,7 @@ export class DifferencesView extends ItemView {
 
 		// Right file (bottom)
 		new ActionLineButton({
-			text: `Accept All from Local Disk`,
+			text: `Принять всё с диска`,
 			onClick: async (e) => {
 				e.preventDefault();
 				await this.acceptAllFromRight();

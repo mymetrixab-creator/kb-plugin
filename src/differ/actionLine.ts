@@ -92,17 +92,17 @@ export class ActionLine {
 			}).build(actionLine);
 			ActionLineDivider.build(actionLine);
 			new ActionLineButton({
-				text: "Accept Bottom (Local Disk)",
+				text: "Принять нижнее (с диска)",
 				onClick: (e) => this.acceptBottomClick(e, this.difference),
 			}).build(actionLine);
 			ActionLineDivider.build(actionLine);
 			new ActionLineButton({
-				text: "Accept All",
+				text: "Принять всё",
 				onClick: (e) => this.acceptAllClick(e, this.difference),
 			}).build(actionLine);
 			ActionLineDivider.build(actionLine);
 			new ActionLineButton({
-				text: "Accept None",
+				text: "Не принимать",
 				onClick: (e) => this.acceptNoneClick(e, this.difference),
 			}).build(actionLine);
 		} else if (hasMinusLines) {
@@ -117,12 +117,12 @@ export class ActionLine {
 			}).build(actionLine);
 		} else if (hasPlusLines) {
 			new ActionLineButton({
-				text: `Accept from Local Disk`,
+				text: `Принять с диска`,
 				onClick: (e) => this.insertFile2Difference(e, this.difference),
 			}).build(actionLine);
 			ActionLineDivider.build(actionLine);
 			new ActionLineButton({
-				text: "Discard on Disk",
+				text: "Отбросить с диска",
 				onClick: (e) => this.discardFile2Difference(e, this.difference),
 			}).build(actionLine);
 		}
